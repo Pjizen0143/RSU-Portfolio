@@ -1,8 +1,8 @@
-const navItem = "p-4 m-3 bg-[#F5F8FB] hover:text-[#F5F8FB] hover:bg-[#1A1A1A] border rounded-lg transition-colors duration-300";
+const navItem = "p-4 m-3 bg-bg hover:text-bg hover:bg-primary border rounded-lg transition-colors duration-300";
 
 export default function Navbar() {
     return (
-        <nav className="grid grid-cols-3 bg-[#F5F8FB] pt-7">
+        <nav className="grid grid-cols-3 bg-bg pt-7">
             {/* left */}
             <div className="flex justify-start pl-7">
             </div>

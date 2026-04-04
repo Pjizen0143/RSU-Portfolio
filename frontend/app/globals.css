@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
-body {
-  @apply bg-[#F5F8FB];
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --color-bg: #FFF8F0;
+  --color-primary: #1A1A1A;
+  --color-text: #1A1A1A;
+}
+
+@layer base {
+  [data-theme=dark] {
+    --color-bg: #1A1A1A;
+    --color-primary: #FFF8F0;
+    --color-text: #FFF8F0;
+  }
 }
