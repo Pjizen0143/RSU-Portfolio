@@ -7,7 +7,7 @@ const navItem = "inline-block p-4 m-3 bg-bg hover:shadow-md hover:scale-[1.1] ac
 export default function Navbar() {
     return (
         /* cols 3 in large screens, 2 in small screens */
-        <nav className="grid grid-cols-2 ml:grid-cols-[1fr_2fr_1fr] bg-bg/70 backdrop-blur-sm pt-3 items-center border-b border-primary">
+        <nav className="grid grid-cols-2 ml:grid-cols-[1fr_2fr_1fr] bg-bg/20 backdrop-blur-sm pt-3 items-center border-b border-primary">
 
             {/* left */}
             <div className="flex justify-start py-3 px-7">
