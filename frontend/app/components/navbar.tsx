@@ -1,10 +1,15 @@
-const navItem = "p-4 m-3 bg-bg hover:text-bg hover:bg-primary border rounded-lg transition-colors duration-300";
+import ThemeToggle from "./theme-btn";
+import ProfileCircle from "./profile";
+
+const navItem = "inline-block p-4 m-3 bg-bg hover:shadow-md hover:scale-[1.1] border rounded-lg transition-all duration-200"
+
 
 export default function Navbar() {
     return (
-        <nav className="grid grid-cols-3 bg-bg pt-7">
+        <nav className="grid grid-cols-3 bg-bg pt-3">
             {/* left */}
             <div className="flex justify-start pl-7">
+                <ProfileCircle />
             </div>
 
             {/* mjid */}
@@ -17,9 +22,17 @@ export default function Navbar() {
 
             {/* right */}
             <div className="flex justify-end pr-7">
-                <a href="https://github.com/pjizen0143" target="_blank" rel="noopener noreferrer" className={navItem}>
-                    GitHub
-                </a>
+                <ul className="flex items-center pt-7">
+                    <li>
+                        <ThemeToggle />
+                    </li>
+                    <li>
+                        <a href="https://github.com/pjizen0143" target="_blank" rel="noopener noreferrer" className={navItem}>
+                            GitHub
+                        </a>
+                    </li>
+                </ul>
+
             </div>
         </nav >
     );
