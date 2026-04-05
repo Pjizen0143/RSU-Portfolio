@@ -11,6 +11,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-center mt-10">
           Welcome to My Portfolio
         </h1>
+        <div className="h-2000"></div>
       </main>
     </>
   );

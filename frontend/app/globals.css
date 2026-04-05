@@ -2,10 +2,13 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+
 @theme {
   --color-bg: #FFF8F0;
   --color-primary: #1A1A1A;
   --color-text: #1A1A1A;
+
+  --breakpoint-ml: 900px;
 }
 
 @layer base {
