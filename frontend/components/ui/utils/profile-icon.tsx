@@ -8,6 +8,7 @@ export default function ProfileCircle() {
                     src="/IMG_5301.jpeg"
                     alt="Profile"
                     fill
+                    sizes='( max-width: 768px ) 100vw, 200px'
                     className="object-cover object-top"
                 />
             </div>
