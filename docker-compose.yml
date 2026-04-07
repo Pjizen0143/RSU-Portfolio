@@ -20,10 +20,12 @@ services:
     restart: always
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
-      DB_USER: ${PG_USER}
-      DB_PASSWORD: ${PG_PASSWORD}
-      DB_NAME: ${PG_DATABASE}
+      PG_USER: ${PG_USER}
+      PG_PASSWORD: ${PG_PASSWORD}
+      PG_DATABASE: ${PG_DATABASE}
       DB_HOST: db
       DB_PORT: 5432
     ports:
