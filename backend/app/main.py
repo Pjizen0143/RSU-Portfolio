@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+from app.db import create_db_and_tables
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+async def lifespan(app: FastAPI):
+    create_db_and_tables()
+    yield
+
+app = FastAPI(lifespan=lifespan)
+
