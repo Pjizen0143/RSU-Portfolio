@@ -4,7 +4,7 @@ from fastapi import Depends
 
 from app.config import settings
 
-engine = create_engine(str(settings.db_url))
+engine = create_engine(str(settings.PG_URL))
 
 def get_session():
     with Session(engine) as session:

@@ -1,9 +1,8 @@
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import PostgresDsn
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-ENV_PATH = BASE_DIR / ".env"
+ENV_PATH = BASE_DIR / ".env.backend"
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -11,22 +10,7 @@ class Settings(BaseSettings):
         extra="ignore"
     )
 
-    PG_USER: str = ...
-    PG_PASSWORD: str = ...
-    PG_DATABASE: str = ...
-    PG_HOST: str = "db"
-    PG_PORT: int = 5432
-
-    @property
-    def db_url(self) -> PostgresDsn:
-        return PostgresDsn.build(
-            scheme="postgresql",
-            username=self.PG_USER,
-            password=self.PG_PASSWORD,
-            host=self.PG_HOST,
-            port=self.PG_PORT,
-            path=self.PG_DATABASE
-        )
+    PG_URL: str = ...
 
 
 settings = Settings()

@@ -3,10 +3,8 @@ services:
     image: postgres:16
     restart: always
     container_name: rsu-port-db
-    environment:
-      POSTGRES_USER: ${PG_USER}
-      POSTGRES_PASSWORD: ${PG_PASSWORD}
-      POSTGRES_DB: ${PG_DATABASE}
+    env_file:
+      - .env.db
     ports:
       - "5432:5432"
     volumes:
@@ -21,13 +19,7 @@ services:
     depends_on:
       - db
     env_file:
-      - .env
-    environment:
-      PG_USER: ${PG_USER}
-      PG_PASSWORD: ${PG_PASSWORD}
-      PG_DATABASE: ${PG_DATABASE}
-      DB_HOST: db
-      DB_PORT: 5432
+      - ./backend/.env.backend
     ports:
       - "8000:8000"
     volumes:
