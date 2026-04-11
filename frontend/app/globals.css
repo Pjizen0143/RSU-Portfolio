@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+
+@theme {
+  --color-bg: #FFF8F0;
+  --color-primary: #1A1A1A;
+  --color-text: #1A1A1A;
+
+  --breakpoint-ml: 900px;
+}
+
+@layer base {
+  [data-theme=dark] {
+    --color-bg: #1A1A1A;
+    --color-primary: #FFF8F0;
+    --color-text: #FFF8F0;
+  }
+}
