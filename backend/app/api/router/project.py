@@ -6,10 +6,10 @@ from app import crud
 
 
 
-router = APIRouter(prefix="/project")
+router = APIRouter(prefix="/projects")
 
 
-@router.post("/projects/", status_code=status.HTTP_201_CREATED, response_model=Message)
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=Message)
 async def create_projects(project_in: ProjectCreate, session: SessionDep):
     project = crud.create_project(project_in=project_in, session=session)
     if project is None:
@@ -17,12 +17,12 @@ async def create_projects(project_in: ProjectCreate, session: SessionDep):
     return Message(message="Project created successfully")
 
 
-@router.delete("/projects/{project_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{project_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_project(project_id: int, session: SessionDep):
     if not crud.delete_project(project_id=project_id, session=session):
         raise HTTPException(status_code=404, detail="Project not found")
 
 
-@router.get("/projects/")
+@router.get("/")
 async def get_projects(session: SessionDep, skip: int = 0, limit: int = 10):
     return crud.get_projects(session=session, skip=skip, limit=limit)
