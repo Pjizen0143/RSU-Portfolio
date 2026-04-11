@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { API_URL } from "@/lib/env";
 
 interface Project {
     id: number;
@@ -19,7 +20,7 @@ export const useProjects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await fetch("/api/projects");
+                const response = await fetch(`${API_URL}/api/v1/projects/?skip=0&limit=10`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch projects");
                 }
