@@ -2,7 +2,7 @@ import ThemeToggle from "../ui/utils/theme-btn";
 import ProfileCircle from "../ui/utils/profile-icon";
 import { GithubIcon } from "../ui/utils/github-icon-btn";
 
-const navItem = "inline-block p-4 m-3 bg-bg hover:shadow-md hover:scale-[1.1] active:scale-[0.95] border rounded-lg transition-all duration-200"
+const navItem = "inline-block p-4 m-3 bg-bg/90 hover:shadow-md hover:scale-[1.1] active:scale-[0.95] border rounded-lg transition-all duration-200"
 
 export default function Navbar() {
     return (
