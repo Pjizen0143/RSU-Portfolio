@@ -1,3 +1,4 @@
+import SkillsSection from "@/components/ui/sections/SkillsSection";
 import AboutSection from "../../components/ui/sections/AboutSection";
 
 export default function Home() {
@@ -20,12 +21,7 @@ export default function Home() {
       </section>
       <div className="h-20"></div>
       <AboutSection />
-      <div className="h-10"></div>
-      <section className="mx-20">
-        <h2 className="text-xl font-bold">
-          Skills
-        </h2>
-      </section>
+      <SkillsSection />
       <div className="h-2000"></div>
     </>
   );
