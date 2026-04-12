@@ -79,8 +79,12 @@ const skillGroups = [
 
 export default function SkillsSection() {
     return (
-        <section className="mx-20 mt-10">
-            <h2 className="text-xl font-bold mb-6">Skills</h2>
+        <section className="mx-20">
+            <div className="flex items-baseline mb-3 gap-1">
+                <h2 className="text-xl font-bold">Skills</h2>
+                <span className="text-sm font-normal text-gray-500">.json</span>
+            </div>
+
 
             <div className="flex flex-col gap-5">
                 {skillGroups.map((group) => (

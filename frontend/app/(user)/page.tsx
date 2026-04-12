@@ -21,6 +21,7 @@ export default function Home() {
       </section>
       <div className="h-20"></div>
       <AboutSection />
+      <div className="h-10"></div>
       <SkillsSection />
       <div className="h-2000"></div>
     </>
