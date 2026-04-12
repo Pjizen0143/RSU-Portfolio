@@ -1,6 +1,6 @@
 "use client";
 
-import ProjectCard from "@/components/ui/projects/project-card";
+import ProjectCard from "@/components/ui/project-card";
 import { useProjects } from "@/hooks/useProjects";
 
 export default function ProjectList() {

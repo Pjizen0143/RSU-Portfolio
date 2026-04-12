@@ -1,4 +1,4 @@
-import AboutSection from "./AboutSection";
+import AboutSection from "../../components/ui/sections/AboutSection";
 
 export default function Home() {
   return (

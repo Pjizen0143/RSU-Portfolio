@@ -1,6 +1,6 @@
-import ThemeToggle from "../ui/utils/theme-btn";
-import ProfileCircle from "../ui/utils/profile-icon";
-import { GithubIcon } from "../ui/utils/github-icon-btn";
+import ThemeToggle from "../ui/theme-btn";
+import ProfileCircle from "../ui/profile-icon";
+import { GithubIcon } from "../ui/github-icon-btn";
 
 const navItem = "inline-block p-2 m-1 md:p-4 md:m-3 bg-bg/90 hover:shadow-md hover:scale-[1.05] md:hover:scale-[1.1] active:scale-[0.95] border rounded-lg transition-all duration-200 text-sm md:text-base"
 
