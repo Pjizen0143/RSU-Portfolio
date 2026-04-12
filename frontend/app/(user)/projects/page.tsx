@@ -1,4 +1,4 @@
-import ProjectCard from "@/components/ui/project-card";
+import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectList from "../../../components/ui/ProjectList";
 
 export default function ProjectSection() {

@@ -1,7 +1,7 @@
 "use client";
 import { Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
-import IconButton from "./icon-btn";
+import IconButton from "./IconBtn";
 
 export default function ThemeToggle() {
     const [theme, setTheme] = useState("light");

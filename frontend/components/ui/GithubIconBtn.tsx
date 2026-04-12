@@ -1,4 +1,4 @@
-import IconButton from "./icon-btn";
+import IconButton from "./IconBtn";
 
 export const GithubIcon = ({ className }: { className?: string }) => (
     <IconButton
