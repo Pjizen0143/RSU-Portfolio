@@ -6,14 +6,49 @@ type FileKey = "about" | "education";
 export default function AboutSection() {
   const [activeFile, setActiveFile] = useState<FileKey>("about");
 
-  const files: Record<FileKey, string> = {
-    about: `lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ipsum dignissimos error quis! Quam explicabo alias voluptates, tempora nemo ipsam rerum corrupti, voluptas veritatis consectetur ut. Voluptates ea beatae saepe!`,
-    education: `Computer Engineering Student - Rangsit University\nExpected Graduation: 2027\nGPA: 3.46/4.0`,
+  const files: Record<FileKey, React.ReactNode> = {
+    about: (
+      <span className="font-sans leading-relaxed">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ipsum
+        dignissimos error quis! Quam explicabo alias voluptates, tempora nemo
+        ipsam rerum corrupti, voluptas veritatis consectetur ut. Voluptates ea
+        beatae saepe!
+      </span>
+    ),
+
+    education: (
+      <div className="space-y-4 leading-relaxed">
+        <div>
+          <p className="font-semibold">
+            Science & Mathematics Program
+          </p>
+          <p className="text-xs opacity-70">
+            Angthong Pitthamaroj Witthayakhom School
+          </p>
+        </div>
+
+        <div>
+          <p className="font-semibold">
+            Computer Engineering Student
+          </p>
+          <p className="text-xs opacity-70">
+            Rangsit University
+          </p>
+          <p className="text-xs">
+            Expected Graduation: 2027
+          </p>
+          <p className="text-xs">
+            GPA: 3.46 / 4.0
+          </p>
+        </div>
+      </div>
+    ),
   };
 
   return (
-    <section className="text-sm font-bold mx-20">
-      <div className="flex gap-2 mb-2 font-mono text-xs">
+    <section className="text-sm mx-20">
+      {/* Tabs */}
+      <div className="flex gap-2 mb-2 text-xs">
         {(Object.keys(files) as FileKey[]).map((key) => {
           const isActive = activeFile === key;
 
@@ -22,13 +57,13 @@ export default function AboutSection() {
               key={key}
               onClick={() => setActiveFile(key)}
               className={`
-          px-3 py-1 rounded-t-lg border transition-all duration-200 cursor-pointer
+                px-3 py-1 rounded-t-lg border transition-all duration-200 cursor-pointer
 
-          ${isActive
+                ${isActive
                   ? "bg-bg border-primary border-b-transparent translate-y-0.5 shadow-md"
-                  : "bg-transparent border-primary/40 text-gray-400  hover:-translate-y-1 hover:shadow-lg"
+                  : "bg-transparent border-primary/40 text-gray-400 hover:-translate-y-1 hover:shadow-lg"
                 }
-        `}
+              `}
             >
               {key}.txt
             </button>
@@ -36,9 +71,12 @@ export default function AboutSection() {
         })}
       </div>
 
-      <div className="p-4 rounded-b-lg font-mono border border-primary bg-bg/90 whitespace-pre-wrap">
-        {files[activeFile]}
-        <span className="inline-block align-middle w-2 h-[1em] ml-0.5 bg-primary animate-[blink_1s_step-end_infinite]" />
+      <div className="p-4 rounded-b-lg border border-primary bg-bg/90">
+        <div className="whitespace-pre-wrap">
+          {files[activeFile]}
+          <span className="inline-block align-middle w-2 h-[1em] ml-0.5 bg-primary animate-[blink_1s_step-end_infinite]" />
+        </div>
+
       </div>
 
       <a href="/about" className="inline-block mt-4 px-4 py-2">

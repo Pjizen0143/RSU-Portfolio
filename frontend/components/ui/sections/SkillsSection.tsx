@@ -80,10 +80,11 @@ const skillGroups = [
 export default function SkillsSection() {
     return (
         <section className="mx-20">
-            <div className="flex items-baseline mb-3 gap-1">
+            <div className="flex items-baseline mb-1 gap-1">
                 <h2 className="text-xl font-bold">Skills</h2>
                 <span className="text-sm font-normal text-gray-500">.json</span>
             </div>
+            <hr className="mb-3 border-primary opacity-30" />
 
 
             <div className="flex flex-col gap-5">
