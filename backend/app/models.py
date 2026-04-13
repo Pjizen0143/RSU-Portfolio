@@ -11,6 +11,11 @@ class ProjectBase(SQLModel):
     is_star: bool = False
 
 
+class ContactBase(SQLModel):
+    name: str | None = Field(default="My Contact", max_length=60)
+    email: str | None = Field(default="<EMAIL>", max_length=60)
+    message: str | None = Field(default="My Contact Message", max_length=2500)
+
 # API Schemas
 class Message(SQLModel):
     message: str
@@ -28,6 +33,18 @@ class ProjectUpdate(ProjectBase):
     pass
 
 
+class ContactCreate(ContactBase):
+    pass
+
+
+class ContactPublic(ContactBase):
+    pass
+
+
 # Database Model
 class Projects(ProjectBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+
+
+class Contacts(ContactBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
