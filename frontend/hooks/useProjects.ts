@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { API_URL } from "@/lib/env";
 
 interface Project {
-    id: number;
     name: string;
     description: string;
     start_date: string;
