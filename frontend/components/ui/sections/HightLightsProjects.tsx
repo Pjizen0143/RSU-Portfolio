@@ -9,7 +9,7 @@ export default function HightLightsProjects() {
             </div>
             <hr className="mb-3 border-primary opacity-30" />
             <ProjectCard project={{ name: "Portfolio Website", description: "My personal portfolio" }} />
-            <a href="/about" className="inline-block mt-4 px-4 py-2">
+            <a href="/projects" className="inline-block mt-4 px-4 py-2">
                 All Projects →
             </a>
         </section>
