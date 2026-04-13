@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function ContactForm() {
     const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
     return (
@@ -36,6 +37,23 @@ export default function ContactForm() {
                     />
                 </div>
 
+                {/* Email */}
+                <div>
+                    <label className="block text-xs font-mono opacity-60 mb-1">
+                        email:
+                    </label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email..."
+                        className="w-full bg-transparent border border-primary/50 rounded px-2 py-1 
+                       text-sm font-mono outline-none
+                       focus:border-primary"
+                        required
+                    />
+                </div>
+
                 {/* Message */}
                 <div>
                     <label className="block text-xs font-mono opacity-60 mb-1">
@@ -44,7 +62,7 @@ export default function ContactForm() {
                     <textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        rows={4}
+                        rows={6}
                         placeholder="Write your message..."
                         className="w-full bg-transparent border border-primary/50 rounded px-2 py-1 
                        text-sm font-mono outline-none resize-none

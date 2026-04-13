@@ -6,6 +6,7 @@ export default function Contact() {
             <h1 className="text-4xl md:text-5xl font-bold text-center mx-6 mb-6">Contact Me</h1>
             <p className="text-center">Feel free to reach out!</p>
             <ContactForm />
+            <div className="mb-10"></div>
         </div>
     );
 }

@@ -74,7 +74,7 @@ export default function AboutSection() {
       <div className="p-4 rounded-b-lg border border-primary bg-bg/90">
         <div className="whitespace-pre-wrap">
           {files[activeFile]}
-          <span className="inline-block align-middle w-2 h-[1em] ml-0.5 bg-primary animate-[blink_1s_step-end_infinite]" />
+          <span className="inline-block align-middle w-2 h-[1em] ml-0.5 bg-primary animate-blink" />
         </div>
 
       </div>
