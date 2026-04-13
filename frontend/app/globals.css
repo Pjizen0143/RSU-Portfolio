@@ -12,9 +12,30 @@
 }
 
 @layer base {
+  html {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
   [data-theme=dark] {
     --color-bg: #1A1A1A;
     --color-primary: #FFF8F0;
     --color-text: #FFF8F0;
+  }
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
   }
 }
