@@ -1,6 +1,7 @@
 import SkillsSection from "@/components/ui/sections/SkillsSection";
 import AboutSection from "../../components/ui/sections/AboutSection";
 import HightLightsProjects from "@/components/ui/sections/HightLightsProjects";
+import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
       <SkillsSection />
       <div className="h-10"></div>
       <HightLightsProjects />
-      <div className="h-2000"></div>
+      <Footer />
     </>
   );
 }
