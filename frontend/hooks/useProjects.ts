@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL } from "@/lib/env";
 
@@ -20,12 +21,8 @@ export const useProjects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await fetch(`${API_URL}/api/v1/projects/?skip=0&limit=10`);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch projects");
-                }
-                const data: Project[] = await response.json();
-                setProjects(data);
+                const response = await axios.get(`${API_URL}/api/v1/projects/?skip=0&limit=10`);
+                setProjects(response.data);
             } catch (err) {
                 setError((err as Error).message);
             } finally {
