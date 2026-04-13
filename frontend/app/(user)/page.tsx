@@ -1,11 +1,12 @@
 import SkillsSection from "@/components/ui/sections/SkillsSection";
 import AboutSection from "../../components/ui/sections/AboutSection";
+import HightLightsProjects from "@/components/ui/sections/HightLightsProjects";
 
 export default function Home() {
   return (
     <>
       <section>
-        <h1 className="text-xl md:text-4xl font-bold text-center mx-6">
+        <h1 className="tracking-wide text-lg opacity-80text-xl md:text-4xl font-bold text-center mx-6">
           Welcome to My Portfolio
         </h1>
         <br />
@@ -23,6 +24,8 @@ export default function Home() {
       <AboutSection />
       <div className="h-10"></div>
       <SkillsSection />
+      <div className="h-10"></div>
+      <HightLightsProjects />
       <div className="h-2000"></div>
     </>
   );
