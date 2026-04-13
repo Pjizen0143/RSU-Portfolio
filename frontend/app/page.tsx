@@ -1,12 +1,16 @@
 import SkillsSection from "@/components/ui/sections/SkillsSection";
-import AboutSection from "../../components/ui/sections/AboutSection";
+import AboutSection from "../components/ui/sections/AboutSection";
 import HightLightsProjects from "@/components/ui/sections/HightLightsProjects";
 import Footer from "@/components/ui/Footer";
+import Navbar from "@/components/layouts/navbar";
 
 export default function Home() {
   return (
     <>
-      <section>
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Navbar />
+      </div>
+      <section className="pt-25 md:pt-40">
         <h1 className="tracking-wide text-lg opacity-80text-xl md:text-4xl font-bold text-center mx-6">
           Welcome to My Portfolio
         </h1>
