@@ -48,3 +48,13 @@ class Projects(ProjectBase, table=True):
 
 class Contacts(ContactBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
+
+
+# LINE-OA Schemas
+class LineMessageObject(SQLModel):
+    type: str = "text"
+    text: str
+
+class LinePushMessage(SQLModel):
+    to: str
+    messages: list[LineMessageObject]
