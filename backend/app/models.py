@@ -21,6 +21,11 @@ class Message(SQLModel):
     message: str
 
 
+class LoginRequest(SQLModel):
+    username: str
+    password: str
+
+
 class ProjectCreate(ProjectBase):
     pass
 
