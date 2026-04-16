@@ -19,7 +19,7 @@ export default function AdminLoginForm() {
         try {
             await loginAdmin(username, password);
             setSuccess(true);
-            router.push("/admin/dashboard");
+            router.push("/admin");
         } catch (err) {
             setError(err instanceof Error ? err.message : "Login failed.");
         }

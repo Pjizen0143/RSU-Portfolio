@@ -15,7 +15,7 @@ export default function LogoutBtn() {
 
         try {
             await logoutAdmin();
-            router.push("/login");
+            router.push("/");
         } catch (err) {
             setError(err instanceof Error ? err.message : "Logout failed.");
         } finally {
