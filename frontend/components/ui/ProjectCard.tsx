@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -11,7 +12,17 @@ interface Project {
     image: string;
 }
 
-export default function ProjectCard({ project, isAdmin = false, onDelete }: { project: Project; isAdmin?: boolean; onDelete?: () => void }) {
+type ProjectPreview = Pick<Project, "id" | "name" | "description">;
+
+export default function ProjectCard({
+    project,
+    isAdmin = false,
+    onDelete
+}: {
+    project: ProjectPreview;
+    isAdmin?: boolean;
+    onDelete?: () => void;
+}) {
     const { deleteProject, loading, error } = useDeleteProject();
     const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
@@ -22,7 +33,7 @@ export default function ProjectCard({ project, isAdmin = false, onDelete }: { pr
             await deleteProject(project.id);
             onDelete?.();
         } catch {
-            // error state handled in hook
+            // handled in hook
         } finally {
             setDeleteTarget(null);
         }
@@ -45,7 +56,11 @@ export default function ProjectCard({ project, isAdmin = false, onDelete }: { pr
                 </button>
             )}
 
-            {error && <p className="text-sm text-red-600 mt-2">Delete error: {error}</p>}
+            {error && (
+                <p className="text-sm text-red-600 mt-2">
+                    Delete error: {error}
+                </p>
+            )}
         </div>
     );
 }
