@@ -1,6 +1,14 @@
 import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectList from "@/components/ui/ProjectList";
 
+interface Project {
+    id: string;
+    name: string;
+    description: string;
+    start_date: string;
+    image: string;
+}
+
 export default function ProjectSection() {
     return (
         <section className="mx-6 mb-6">
