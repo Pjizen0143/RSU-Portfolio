@@ -30,19 +30,11 @@ class ProjectCreate(ProjectBase):
     pass
 
 
-class ProjectPublic(ProjectBase):
-    pass
-
-
 class ProjectUpdate(ProjectBase):
     pass
 
 
 class ContactCreate(ContactBase):
-    pass
-
-
-class ContactPublic(ContactBase):
     pass
 
 
