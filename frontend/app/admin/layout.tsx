@@ -3,7 +3,7 @@ import LogoutBtn from "@/components/ui/LogoutBtn";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="p-10 max-w-2xl mx-auto">
+        <div className="p-10 mx-auto">
             <h1 className="text-3xl font-bold">Admin Dashboard</h1>
 
             <div className="flex gap-5 mt-10">
@@ -19,9 +19,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     </button>
                 </Link>
             </div>
-            <footer>
-                <LogoutBtn />
-            </footer>
+            <LogoutBtn />
+            <main>
+                {children}
+            </main>
         </div>
     );
 }

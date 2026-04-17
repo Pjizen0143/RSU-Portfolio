@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 
-from app.models import ProjectCreate, Message, ProjectPublic
+from app.models import ProjectCreate, Message, Projects
 from app.db import SessionDep
 from app import crud
 
@@ -23,6 +23,6 @@ async def delete_project(project_id: int, session: SessionDep):
         raise HTTPException(status_code=404, detail="Project not found")
 
 
-@router.get("/", response_model=list[ProjectPublic])
+@router.get("/", response_model=list[Projects])
 async def get_projects(session: SessionDep, skip: int = 0, limit: int = 10):
     return crud.get_projects(session=session, skip=skip, limit=limit)
