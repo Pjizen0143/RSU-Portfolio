@@ -8,7 +8,7 @@ export default function HightLightsProjects() {
                 <span className="text-sm font-normal text-gray-500">.yaml</span>
             </div>
             <hr className="mb-3 border-primary opacity-30" />
-            <ProjectCard project={{ name: "Portfolio Website", description: "My personal portfolio" }} />
+            <ProjectCard project={{ id: "highlight-1", name: "Portfolio Website", description: "My personal portfolio" }} />
             <a href="/projects" className="inline-block mt-4 px-4 py-2">
                 All Projects →
             </a>
