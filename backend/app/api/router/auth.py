@@ -7,7 +7,7 @@ from app.api.auth_service import authenticate
 router = APIRouter(tags=["auth"])
 
 
-@router.post("/login", response_model=Message)
+@router.post("/login/", response_model=Message)
 async def login(identity: LoginRequest, request: Request):
     if not authenticate(identity.username, identity.password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
@@ -16,7 +16,7 @@ async def login(identity: LoginRequest, request: Request):
     return Message(message="Login successful")
 
 
-@router.post("/logout", response_model=Message)
+@router.post("/logout/", response_model=Message)
 async def logout(request: Request):
     request.session.clear()
     return Message(message="Logged out")
