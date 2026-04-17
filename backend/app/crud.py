@@ -1,4 +1,4 @@
-from sqlmodel import Session, select
+from sqlmodel import Session, select, desc
 
 from app.models import ProjectCreate, Projects, ContactCreate, Contacts
 
@@ -38,5 +38,14 @@ def create_contact(*, session: Session, contact_in: ContactCreate) -> Contacts:
 
 
 def get_contact(*, session: Session, skip: int = 0, limit: int = 10) -> list[Contacts]:
-    contacts = session.exec(select(Contacts).offset(skip).limit(limit)).all()
+    contacts = session.exec(select(Contacts).order_by(desc(Contacts.id)).offset(skip).limit(limit)).all()
     return list(contacts)
+
+
+def delete_contact(*, session: Session, contact_id: int):
+    contact = session.get(Contacts, contact_id)
+    if not contact:
+        return False
+    session.delete(contact)
+    session.commit()
+    return True

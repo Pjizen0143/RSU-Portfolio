@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.router import project, contact
+from app.api.router import project, contact, auth
 
 
 api_router_v1 = APIRouter(
@@ -9,3 +9,4 @@ api_router_v1 = APIRouter(
 
 api_router_v1.include_router(project.router)
 api_router_v1.include_router(contact.router)
+api_router_v1.include_router(auth.router)

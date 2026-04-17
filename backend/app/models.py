@@ -21,11 +21,12 @@ class Message(SQLModel):
     message: str
 
 
+class LoginRequest(SQLModel):
+    username: str
+    password: str
+
+
 class ProjectCreate(ProjectBase):
-    pass
-
-
-class ProjectPublic(ProjectBase):
     pass
 
 
@@ -34,10 +35,6 @@ class ProjectUpdate(ProjectBase):
 
 
 class ContactCreate(ContactBase):
-    pass
-
-
-class ContactPublic(ContactBase):
     pass
 
 

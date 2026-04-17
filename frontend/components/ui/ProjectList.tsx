@@ -3,8 +3,16 @@
 import ProjectCard from "@/components/ui/ProjectCard";
 import { useProjects } from "@/hooks/useProjects";
 
-export default function ProjectList() {
-    const { projects, loading, error } = useProjects();
+interface Project {
+    id: string;
+    name: string;
+    description: string;
+    start_date: string;
+    image: string;
+}
+
+export default function ProjectList({ isAdmin = false }: { isAdmin?: boolean }) {
+    const { projects, loading, error, refreshProjects } = useProjects();
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>`{error}`</p>;
@@ -13,7 +21,12 @@ export default function ProjectList() {
     return (
         <>
             {projects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
+                <ProjectCard
+                    key={project.id || index}
+                    project={project}
+                    isAdmin={isAdmin}
+                    onDelete={refreshProjects}
+                />
             ))}
         </>
     );
