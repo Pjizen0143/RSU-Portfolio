@@ -4,23 +4,21 @@ export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
     const sessionCookie = request.cookies.get("session")?.value;
 
-
-    if (pathname === "/admin/login") {
-        if (sessionCookie) {
-            return NextResponse.redirect(new URL("/admin/dashboard", request.url));
-        }
-        return NextResponse.next();
+    if (pathname.startsWith("/admin") && !sessionCookie) {
+        return NextResponse.redirect(new URL("/login", request.url));
     }
 
-    if (pathname.startsWith("/admin")) {
-        if (!sessionCookie) {
-            return NextResponse.redirect(new URL("/admin/login", request.url));
-        }
+    if (pathname === "/admin") {
+        return NextResponse.redirect(new URL("/admin/inboxs", request.url));
+    }
+
+    if (pathname === "/login" && sessionCookie) {
+        return NextResponse.redirect(new URL("/admin/inboxs", request.url));
     }
 
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: ["/admin/:path*"],
+    matcher: ["/admin/:path*", "/login"],
 };
