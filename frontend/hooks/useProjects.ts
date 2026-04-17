@@ -1,10 +1,11 @@
 "use client";
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { API_URL } from "@/lib/env";
 
 interface Project {
+    id: string;
     name: string;
     description: string;
     start_date: string;
@@ -17,20 +18,20 @@ export const useProjects = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const response = await axios.get(`${API_URL}/api/v1/projects/?skip=0&limit=10`);
-                setProjects(response.data);
-            } catch (err) {
-                setError((err as Error).message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchProjects();
+    const fetchProjects = useCallback(async () => {
+        try {
+            const response = await axios.get(`${API_URL}/api/v1/projects/?skip=0&limit=10`);
+            setProjects(response.data);
+        } catch (err) {
+            setError((err as Error).message);
+        } finally {
+            setLoading(false);
+        }
     }, []);
 
-    return { projects, loading, error };
+    useEffect(() => {
+        fetchProjects();
+    }, [fetchProjects]);
+
+    return { projects, loading, error, refreshProjects: fetchProjects };
 };
