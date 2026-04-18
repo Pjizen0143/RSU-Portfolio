@@ -1,5 +1,6 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 
+from app.api.auth_service import get_current_user
 from app.models import ProjectCreate, Message, Projects
 from app.db import SessionDep
 from app import crud
@@ -9,7 +10,7 @@ from app import crud
 router = APIRouter(prefix="/projects", tags=["projects"])
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model=Message)
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=Message, dependencies=[Depends(get_current_user)])
 async def create_projects(project_in: ProjectCreate, session: SessionDep):
     project = crud.create_project(project_in=project_in, session=session)
     if project is None:
@@ -17,7 +18,7 @@ async def create_projects(project_in: ProjectCreate, session: SessionDep):
     return Message(message="Project created successfully")
 
 
-@router.delete("/{project_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{project_id}", status_code=status.HTTP_204_NO_CONTENT, dependencies=[Depends(get_current_user)])
 async def delete_project(project_id: int, session: SessionDep):
     if not crud.delete_project(project_id=project_id, session=session):
         raise HTTPException(status_code=404, detail="Project not found")

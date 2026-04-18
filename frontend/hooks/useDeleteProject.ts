@@ -12,8 +12,17 @@ export const useDeleteProject = () => {
         setLoading(true);
         setError(null);
 
+        const token = localStorage.getItem("auth_token");
+        if (!token) {
+            throw new Error("No authentication token found");
+        }
+
         try {
-            const response = await axios.delete(`${API_URL}/api/v1/projects/${id}/`);
+            const response = await axios.delete(`${API_URL}/api/v1/projects/${id}/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             return response.data;
         } catch (err) {
             const message = (err as Error).message;

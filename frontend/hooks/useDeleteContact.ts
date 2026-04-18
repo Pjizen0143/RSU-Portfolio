@@ -12,8 +12,17 @@ export const useDeleteContact = () => {
         setLoading(true);
         setError(null);
 
+        const token = localStorage.getItem("auth_token");
+        if (!token) {
+            throw new Error("No authentication token found");
+        }
+
         try {
-            const response = await axios.delete(`${API_URL}/api/v1/contacts/${id}/`);
+            const response = await axios.delete(`${API_URL}/api/v1/contacts/${id}/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             return response.data;
         } catch (err) {
             const message = (err as Error).message;
