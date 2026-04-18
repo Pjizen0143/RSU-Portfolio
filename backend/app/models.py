@@ -26,6 +26,11 @@ class LoginRequest(SQLModel):
     password: str
 
 
+class LoginResponse(SQLModel):
+    message: str
+    token: str
+
+
 class ProjectCreate(ProjectBase):
     pass
 
