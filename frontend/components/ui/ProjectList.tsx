@@ -1,5 +1,6 @@
 "use client";
 
+import { forwardRef, Ref, useImperativeHandle } from "react";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { useProjects } from "@/hooks/useProjects";
 
@@ -11,23 +12,37 @@ interface Project {
     image: string;
 }
 
-export default function ProjectList({ isAdmin = false }: { isAdmin?: boolean }) {
-    const { projects, loading, error, refreshProjects } = useProjects();
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>`{error}`</p>;
-    if (!projects) return null;
-
-    return (
-        <>
-            {projects.map((project, index) => (
-                <ProjectCard
-                    key={project.id || index}
-                    project={project}
-                    isAdmin={isAdmin}
-                    onDelete={refreshProjects}
-                />
-            ))}
-        </>
-    );
+interface ProjectListRef {
+    refresh: () => void;
 }
+
+const ProjectList = forwardRef(
+    ({ isAdmin = false }: { isAdmin?: boolean }, ref: Ref<ProjectListRef>) => {
+        const { projects, loading, error, refreshProjects } = useProjects();
+
+        useImperativeHandle(ref, () => ({
+            refresh: refreshProjects,
+        }));
+
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>`{error}`</p>;
+        if (!projects) return null;
+
+        return (
+            <>
+                {projects.map((project, index) => (
+                    <ProjectCard
+                        key={project.id || index}
+                        project={project}
+                        isAdmin={isAdmin}
+                        onDelete={refreshProjects}
+                    />
+                ))}
+            </>
+        );
+    }
+);
+
+ProjectList.displayName = "ProjectList";
+
+export default ProjectList;

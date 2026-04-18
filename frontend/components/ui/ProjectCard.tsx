@@ -40,21 +40,23 @@ export default function ProjectCard({
     };
 
     return (
-        <div className="bg-bg/20 backdrop-blur-sm rounded-lg p-6 border border-primary relative">
-            <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+        <div className="bg-bg/20 backdrop-blur-sm rounded-lg p-6 border border-primary">
+            <div className="flex items-start justify-between gap-4 mb-4">
+                <h3 className="text-xl font-bold">{project.name}</h3>
+                {isAdmin && (
+                    <button
+                        type="button"
+                        className="rounded bg-red-600 px-3 py-1 text-white hover:bg-red-700 disabled:opacity-60"
+                        onClick={handleDelete}
+                        disabled={loading && deleteTarget === project.id}
+                    >
+                        {loading && deleteTarget === project.id ? "Deleting..." : "Delete"}
+                    </button>
+                )}
+            </div>
+
             <p className="text-sm text-secondary mb-4">{project.description}</p>
             <a href="#" className="text-primary hover:underline">View Project</a>
-
-            {isAdmin && (
-                <button
-                    type="button"
-                    className="absolute top-4 right-4 rounded bg-red-600 px-3 py-1 text-white hover:bg-red-700 disabled:opacity-60"
-                    onClick={handleDelete}
-                    disabled={loading && deleteTarget === project.id}
-                >
-                    {loading && deleteTarget === project.id ? "Deleting..." : "Delete"}
-                </button>
-            )}
 
             {error && (
                 <p className="text-sm text-red-600 mt-2">
