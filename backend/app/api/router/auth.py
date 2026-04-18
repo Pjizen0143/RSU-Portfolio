@@ -1,22 +1,17 @@
-from fastapi import APIRouter, Request, HTTPException, status
+from fastapi import APIRouter, HTTPException, status
 
-from app.models import Message, LoginRequest
-from app.api.auth_service import authenticate
-
-
-router = APIRouter(tags=["auth"])
+from app.models import LoginRequest, Token
+from app.api.auth_service import authenticate, create_access_token
 
 
-@router.post("/login/", response_model=Message)
-async def login(identity: LoginRequest, request: Request):
+router = APIRouter(prefix="/auth", tags=["auth"])
+
+
+@router.post("/token", response_model=Token)
+async def login(identity: LoginRequest):
     if not authenticate(identity.username, identity.password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+        raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    request.session["user"] = "admin"
-    return Message(message="Login successful")
+    access_token = create_access_token({"sub": identity.username})
+    return Token(access_token=access_token, token_type="bearer")
 
-
-@router.post("/logout/", response_model=Message)
-async def logout(request: Request):
-    request.session.clear()
-    return Message(message="Logged out")

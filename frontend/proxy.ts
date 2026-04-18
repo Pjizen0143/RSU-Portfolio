@@ -2,17 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
-    const sessionCookie = request.cookies.get("session")?.value;
 
-    if (pathname.startsWith("/admin") && !sessionCookie) {
-        return NextResponse.redirect(new URL("/login", request.url));
-    }
-
+    // Remove automatic redirects - authentication is handled client-side
     if (pathname === "/admin") {
-        return NextResponse.redirect(new URL("/admin/inboxs", request.url));
-    }
-
-    if (pathname === "/login" && sessionCookie) {
         return NextResponse.redirect(new URL("/admin/inboxs", request.url));
     }
 

@@ -1,7 +1,20 @@
+"use client";
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import LogoutBtn from "@/components/ui/LogoutBtn";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+    const router = useRouter();
+
+    useEffect(() => {
+        const token = localStorage.getItem("auth_token");
+        if (!token) {
+            router.push("/login");
+        }
+    }, [router]);
+
     return (
         <div className="p-10 mx-auto">
             <h1 className="text-3xl font-bold">Admin Dashboard</h1>
