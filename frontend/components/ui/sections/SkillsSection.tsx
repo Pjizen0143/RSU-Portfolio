@@ -79,7 +79,7 @@ const skillGroups = [
 
 export default function SkillsSection() {
     return (
-        <section className="mx-20">
+        <section className="mx-10 md:mx-20">
             <div className="flex items-baseline mb-1 gap-1">
                 <h2 className="text-xl font-bold">Skills</h2>
                 <span className="text-sm font-normal text-gray-500">.json</span>

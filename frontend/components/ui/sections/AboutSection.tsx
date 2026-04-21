@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 type FileKey = "about" | "education";
 
@@ -9,10 +10,8 @@ export default function AboutSection() {
   const files: Record<FileKey, React.ReactNode> = {
     about: (
       <span className="font-sans leading-relaxed">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ipsum
-        dignissimos error quis! Quam explicabo alias voluptates, tempora nemo
-        ipsam rerum corrupti, voluptas veritatis consectetur ut. Voluptates ea
-        beatae saepe!
+        A practical developer who enjoys building real systems,
+        thinks in terms of architecture, and focuses on solving real problems rather than just writing code.
       </span>
     ),
 
@@ -46,7 +45,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section className="text-sm mx-20">
+    <section className="text-sm mx-10 md:mx-20">
       {/* Tabs */}
       <div className="flex gap-2 mb-2 text-xs">
         {(Object.keys(files) as FileKey[]).map((key) => {
@@ -79,9 +78,9 @@ export default function AboutSection() {
 
       </div>
 
-      <a href="/about" className="inline-block mt-4 px-4 py-2">
+      <Link href="/about" className="inline-block mt-4 px-4 py-2">
         Read More →
-      </a>
+      </Link>
     </section>
   );
 }

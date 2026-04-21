@@ -19,7 +19,7 @@ export default function Home() {
           Thanaphat Poolthrap
         </h1>
         <br />
-        <h2 className="flex justify-center items-center gap-4 text-lg md:text-2xl mx-6">
+        <h2 className="flex justify-center text-sm items-center gap-4 md:text-2xl mx-6">
           <span>--------</span>
           <span className="px-1">Software Engineer</span>
           <span>--------</span>
